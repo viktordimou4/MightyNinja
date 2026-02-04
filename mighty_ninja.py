@@ -103,6 +103,20 @@ class NinjaGang:
         print("========================\n")
 
 
+def execute_ninja_action(attacker, defender):
+    """Execute a random ninja action."""
+    action = random.choice(['heavy_strike', 'shadow_assault', 'berserker_fury', 'stealth_recovery'])
+    
+    if action == 'heavy_strike':
+        return attacker.heavy_strike(defender)
+    elif action == 'shadow_assault':
+        return attacker.shadow_assault(defender)
+    elif action == 'berserker_fury':
+        return attacker.berserker_fury(defender)
+    else:
+        return attacker.stealth_recovery()
+
+
 def heavy_battle(ninja1, ninja2):
     """Initiate a heavy ninja battle between two warriors."""
     print("\n" + "="*60)
@@ -118,17 +132,7 @@ def heavy_battle(ninja1, ninja2):
         print(f"{ninja2}\n")
         
         # Ninja 1's turn
-        action = random.choice(['heavy_strike', 'shadow_assault', 'berserker_fury', 'stealth_recovery'])
-        
-        if action == 'heavy_strike':
-            result = ninja1.heavy_strike(ninja2)
-        elif action == 'shadow_assault':
-            result = ninja1.shadow_assault(ninja2)
-        elif action == 'berserker_fury':
-            result = ninja1.berserker_fury(ninja2)
-        else:
-            result = ninja1.stealth_recovery()
-        
+        result = execute_ninja_action(ninja1, ninja2)
         print(result)
         time.sleep(0.5)
         
@@ -136,17 +140,7 @@ def heavy_battle(ninja1, ninja2):
             break
         
         # Ninja 2's turn
-        action = random.choice(['heavy_strike', 'shadow_assault', 'berserker_fury', 'stealth_recovery'])
-        
-        if action == 'heavy_strike':
-            result = ninja2.heavy_strike(ninja1)
-        elif action == 'shadow_assault':
-            result = ninja2.shadow_assault(ninja1)
-        elif action == 'berserker_fury':
-            result = ninja2.berserker_fury(ninja1)
-        else:
-            result = ninja2.stealth_recovery()
-        
+        result = execute_ninja_action(ninja2, ninja1)
         print(result)
         time.sleep(0.5)
         
